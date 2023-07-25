@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createUserController = exports.createUserUseCase = void 0;
+const viacep_address_provider_1 = require("../../infra/providers/viacep/viacep-address-provider");
+const mongodb_user_repository_1 = require("../../infra/mongodb/mongodb-user-repository");
+const create_user_controller_1 = require("./create-user-controller");
+const create_user_use_case_1 = require("../../domain/services/create-user-service/create-user-use-case");
+const mongoDBUserRepository = new mongodb_user_repository_1.MongoDBUserRepository();
+const viacepAddressProvider = new viacep_address_provider_1.ViacepAddressProvider();
+const createUserUseCase = new create_user_use_case_1.CreateUserUseCase(mongoDBUserRepository, viacepAddressProvider);
+exports.createUserUseCase = createUserUseCase;
+const createUserController = new create_user_controller_1.CreateUserController(createUserUseCase);
+exports.createUserController = createUserController;

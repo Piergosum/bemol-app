@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findUserByIdController = exports.findUserByIdUseCase = void 0;
+const mongodb_user_repository_1 = require("../../infra/mongodb/mongodb-user-repository");
+const find_user_by_id_controller_1 = require("./find-user-by-id-controller");
+const find_user_by_id_use_case_1 = require("../../domain/services/find-user-by-id-service/find-user-by-id-use-case");
+const mongoDBUserRepository = new mongodb_user_repository_1.MongoDBUserRepository();
+const findUserByIdUseCase = new find_user_by_id_use_case_1.FindUserByIdUseCase(mongoDBUserRepository);
+exports.findUserByIdUseCase = findUserByIdUseCase;
+const findUserByIdController = new find_user_by_id_controller_1.FindUserByIdController(findUserByIdUseCase);
+exports.findUserByIdController = findUserByIdController;

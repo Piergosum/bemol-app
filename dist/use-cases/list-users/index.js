@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.listUsersController = exports.listUsersUseCase = void 0;
+const mongodb_user_repository_1 = require("../../repositories/mongodb/mongodb-user-repository");
+const list_users_controller_1 = require("./list-users-controller");
+const list_users_use_case_1 = require("./list-users-use-case");
+const mongoDBUserRepository = new mongodb_user_repository_1.MongoDBUserRepository();
+const listUsersUseCase = new list_users_use_case_1.ListUsersUseCase(mongoDBUserRepository);
+exports.listUsersUseCase = listUsersUseCase;
+const listUsersController = new list_users_controller_1.ListUsersController(listUsersUseCase);
+exports.listUsersController = listUsersController;
